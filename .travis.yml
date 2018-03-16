@@ -1,0 +1,8 @@
+language: csharp
+
+install:
+  - sh prepare.sh
+  - sh init.sh
+
+script:
+  - sh build.sh
