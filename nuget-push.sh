@@ -1,1 +1,1 @@
-mono lib/nuget.exe push pkg/gitter*nupkg -Source https://www.nuget.org/api/v2/package
+mono lib/nuget.exe push pkg/GitDeployer*nupkg -Source https://www.nuget.org/api/v2/package
