@@ -36,7 +36,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="gitter">
-      <HintPath>..\..\lib\gitter.1.0.0.18\lib\net40\gitter.dll</HintPath>
+      <HintPath>..\..\lib\gitter.1.0.0.19\lib\net40\gitter.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
