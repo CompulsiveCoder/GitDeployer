@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>GitDeployer</id>
-    <version>1.0.0.*</version>
+    <version>1.0.0</version>
     <authors>compulsivecoder</authors>
     <owners>compulsivecoder</owners>
     <projectUrl>https://github.com/CompulsiveCoder/GitDeployer</projectUrl>
