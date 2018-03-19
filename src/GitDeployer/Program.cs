@@ -36,7 +36,8 @@ namespace GitDeployer
 				Console.WriteLine ("Checking remote repository");
 
 				if (gitter.IsInitialized (path)) {
-					var changesFound = gitter.Pull ("origin");
+					var repository = gitter.Open (path);
+					var changesFound = repository.Pull ("origin");
 					needsUpdate = changesFound;
 				}
 				else {
