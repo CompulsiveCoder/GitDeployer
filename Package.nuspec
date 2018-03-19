@@ -7,7 +7,7 @@
     <owners>compulsivecoder</owners>
     <projectUrl>https://github.com/CompulsiveCoder/GitDeployer</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A c# based git client.</description>
+    <description>A service for deploying project updates automatically from git.</description>
     <copyright>Copyright 2017</copyright>
     <tags>git c#</tags>
   </metadata>
