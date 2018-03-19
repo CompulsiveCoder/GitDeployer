@@ -5,8 +5,10 @@ if [ ! -f nuget.exe ]; then
     wget http://nuget.org/nuget.exe
 fi
 
+mono nuget.exe update -self
+
 echo "Installing libraries..."
 
-mono nuget.exe install gitter -version 1.0.0.9
+mono nuget.exe install gitter -version 1.0.0.16-dev
 
 echo "Installation complete!"
