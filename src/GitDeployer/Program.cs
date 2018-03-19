@@ -15,9 +15,16 @@ namespace GitDeployer
 	{
 		public static void Main (string[] args)
 		{
+			Console.WriteLine ("Starting GitDeployer");
+			Console.WriteLine ("");
+
 			var sleepTime = Convert.ToInt32(args[0]);
 
+			Console.WriteLine ("Sleep time: " + sleepTime + " seconds");
+
 			var repositoryPath = args[1];
+
+			Console.WriteLine ("Repository path: " + repositoryPath);
 
 			var path = Path.GetFullPath (args[2]);
 			if (!Directory.Exists(path))
@@ -26,6 +33,9 @@ namespace GitDeployer
 			Environment.CurrentDirectory = path;
 
 			var updateScriptName = args [3];
+
+			Console.WriteLine ("Update script: " + updateScriptName);
+			Console.WriteLine ("");
 
 			var gitter = new Gitter ();
 
