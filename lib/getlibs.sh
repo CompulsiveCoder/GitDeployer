@@ -7,6 +7,6 @@ fi
 
 echo "Installing libraries..."
 
-mono nuget.exe install gitter -version 1.0.0 -pre
+mono nuget.exe install gitter -version 1.0.0.9
 
 echo "Installation complete!"
