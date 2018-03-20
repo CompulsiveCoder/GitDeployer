@@ -67,8 +67,9 @@ namespace GitDeployer
 		public static void Update(string updateScriptName)
 		{
 			Console.WriteLine ("Triggering update");
+			Console.WriteLine ("Dir: " + Environment.CurrentDirectory);
 			var starter = new ProcessStarter ();
-			starter.Start ("sh", updateScriptName);
+			starter.Start ("sh " + updateScriptName);
 
 			Console.WriteLine (starter.Output);
 		}

@@ -9,6 +9,6 @@ mono nuget.exe update -self
 
 echo "Installing libraries..."
 
-mono nuget.exe install gitter -version 1.0.0.19
+mono nuget.exe install gitter -version 1.0.0.27
 
 echo "Installation complete!"
