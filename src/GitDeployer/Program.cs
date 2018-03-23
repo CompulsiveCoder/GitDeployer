@@ -72,6 +72,27 @@ namespace GitDeployer
 			starter.Start ("sh " + updateScriptName);
 
 			Console.WriteLine (starter.Output);
+
+			var notInSync = starter.Output.Contains ("not in sync");
+			var couldNotOpenPort = starter.Output.Contains ("could not open port");
+
+			if (notInSync) {
+				Console.WriteLine ("'not in sync' error means the arduino has likely crashed. Disconnect and reconnect USB or reboot.");
+			}
+
+			if (couldNotOpenPort) {
+				Console.WriteLine ("'could not open port' error means the arduino isnt connected or isnt detected. Ensure it's connected.");
+			}
+
+			if (notInSync || couldNotOpenPort) {
+				Console.WriteLine ("");
+				Console.WriteLine ("Upload failed. Retrying in 10 seconds.");
+				Console.WriteLine ("");
+
+				Thread.Sleep (10 * 1000);
+
+				Update (updateScriptName);
+			}
 		}
 
 	}
