@@ -77,6 +77,7 @@ namespace GitDeployer
 
 			var notInSync = starter.Output.Contains ("not in sync");
 			var couldNotOpenPort = starter.Output.Contains ("could not open port");
+			var programmerIsNotResponding = starter.Output.Contains ("programmer is not responding");
 
 			if (notInSync) {
 				Console.WriteLine ("'not in sync' error means the arduino has likely crashed. Disconnect and reconnect USB or reboot.");
@@ -84,6 +85,10 @@ namespace GitDeployer
 
 			if (couldNotOpenPort) {
 				Console.WriteLine ("'could not open port' error means the arduino isnt connected or isnt detected. Ensure it's connected.");
+			}
+			
+			if (programmerIsNotResponding) {
+				Console.WriteLine ("'programmer is not responding' error means the sketch failed to upload.");
 			}
 
 			if (notInSync || couldNotOpenPort) {
