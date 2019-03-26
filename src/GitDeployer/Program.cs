@@ -35,7 +35,7 @@ namespace GitDeployer
             var updateCommand = args [3];
 
             if (args.Length > 4) {
-                for (int i = 3; i < args.Length; i++) {
+                for (int i = 4; i < args.Length; i++) {
                     updateCommand += " " + args [i];
                 }
             }
