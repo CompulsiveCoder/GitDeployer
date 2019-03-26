@@ -33,10 +33,14 @@ namespace GitDeployer
             Environment.CurrentDirectory = path;
 
             var updateCommand = args [3];
-            var serialPortName = args [4];
+
+            if (args.Length > 4) {
+                for (int i = 3; i < args.Length; i++) {
+                    updateCommand += " " + args [i];
+                }
+            }
 
             Console.WriteLine ("Update command: " + updateCommand);
-            Console.WriteLine ("Serial port name: " + serialPortName);
             Console.WriteLine ("");
 
             var gitter = new Gitter ();
@@ -57,7 +61,7 @@ namespace GitDeployer
                 }
 
                 if (needsUpdate)
-                    Update (updateCommand, serialPortName);
+                    Update (updateCommand);
                 else
                     Console.WriteLine ("Already up to date. Update skipped.");
 
@@ -65,12 +69,12 @@ namespace GitDeployer
             }
         }
 
-        public static void Update (string updateCommand, string updateScriptArguments)
+        public static void Update (string updateCommand)
         {
             Console.WriteLine ("Triggering update");
             Console.WriteLine ("Dir: " + Environment.CurrentDirectory);
             var starter = new ProcessStarter ();
-            starter.Start ("/bin/bash -c '" + EscapeCharacters (updateCommand) + " " + EscapeCharacters (updateScriptArguments) + "'");
+            starter.Start ("/bin/bash -c '" + EscapeCharacters (updateCommand) + "'");
 
             Console.WriteLine (starter.Output);
 
@@ -97,7 +101,7 @@ namespace GitDeployer
 
                 Thread.Sleep (10 * 1000);
 
-                Update (updateCommand, updateScriptArguments);
+                Update (updateCommand);
             }
         }
 
