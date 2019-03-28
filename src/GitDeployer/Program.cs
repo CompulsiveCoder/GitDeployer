@@ -49,23 +49,28 @@ namespace GitDeployer
             var needsUpdate = false;
 
             while (isRunning) {
-                Console.WriteLine ("Checking remote repository");
+                try {
+                    Console.WriteLine ("Checking remote repository");
 
-                if (gitter.IsInitialized (path)) {
-                    var repository = gitter.Open (path);
-                    var changesFound = repository.Pull ("origin");
-                    needsUpdate = changesFound;
-                } else {
-                    gitter.Clone (repositoryPath, path);
-                    needsUpdate = true;
+                    if (gitter.IsWithinRepository (path)) {
+                        var repository = gitter.Open (path);
+                        var changesFound = repository.Pull ("origin");
+                        needsUpdate = changesFound;
+                    } else {
+                        gitter.Clone (repositoryPath, path);
+                        needsUpdate = true;
+                    }
+
+                    if (needsUpdate)
+                        Update (updateCommand);
+                    else
+                        Console.WriteLine ("Already up to date. Update skipped.");
+
+                    Thread.Sleep (sleepTime * 1000);
+                } catch (Exception ex) {
+                    Console.WriteLine ("Error:");
+                    Console.WriteLine (ex.ToString ());
                 }
-
-                if (needsUpdate)
-                    Update (updateCommand);
-                else
-                    Console.WriteLine ("Already up to date. Update skipped.");
-
-                Thread.Sleep (sleepTime * 1000);
             }
         }
 
